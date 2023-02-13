@@ -1,0 +1,65 @@
+.subtitle {
+	margin-bottom: $spacing-1;
+	font-family: var($secondary-font);
+	font-weight: 700;
+	line-height: 1.1875;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0;
+	font-family: var($primary-font);
+	font-weight: 500;
+	line-height: 1.55;
+	letter-spacing: 0.02em;
+
+	+ p {
+		margin-top: $spacing-2;
+	}
+}
+
+h1,
+.h1 {
+	margin: unset;
+	font-family: var($secondary-font);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+
+h2,
+.h2 {
+	margin: unset;
+	font-family: var($secondary-font);
+	font-weight: 500;
+	line-height: 1.05;
+	letter-spacing: -0.03em;
+}
+
+h3,
+.h3 {
+	margin: unset;
+	font-family: var($secondary-font);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.02em;
+}
+
+h4,
+.h4 {
+	margin: unset;
+	font-family: var($secondary-font);
+	font-weight: 500;
+	line-height: 1.21;
+	letter-spacing: -0.02em;
+}
+
+h5,
+.h5 {
+	margin: unset;
+	font-family: var($secondary-font);
+	font-weight: 500;
+	line-height: 1.18;
+	letter-spacing: -0.01em;
+}

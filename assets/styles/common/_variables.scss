@@ -1,0 +1,47 @@
+$grid-breakpoints: (
+		xsmall: rem-calc(0),
+		small: rem-calc(567),
+		medium: rem-calc(768),
+		large: rem-calc(992),
+		xlarge: rem-calc(1280),
+);
+
+// border-radius
+$border-radius-1: rem-calc(25);
+$border-radius-2: rem-calc(50);
+$border-radius-3: rem-calc(80);
+
+// spacing
+$spacing-1: rem-calc(8);
+$spacing-2: rem-calc(16);
+$spacing-3: rem-calc(24);
+$spacing-4: rem-calc(32);
+$spacing-5: rem-calc(40);
+$spacing-6: rem-calc(60);
+
+// flexible row spacing
+$spacing-row: rem-calc(80);
+$spacing-row-2: rem-calc(96);
+$spacing-row-3: rem-calc(160);
+$spacing-row-4: rem-calc(220);
+
+// fonts
+$primary-font: 'Arial';
+$secondary-font: 'Arial';
+
+// colors
+$primary-color: blue;
+$secondary-color: green;
+$tertiary-color: orange;
+
+
+// font sizes supplied to theme.json
+:root {
+	--font-size--body: #{fluid-range( 16px, 18px, 375px, 1280px)};
+	--font-size--subtitle: #{fluid-range( 12px, 16px, 375px, 1280px)};
+	--font-size--h1: #{fluid-range( 43px, 90px, 375px, 1280px)};
+	--font-size--h2: #{fluid-range( 38px, 68px, 375px, 1280px)};
+	--font-size--h3: #{fluid-range( 28px, 42px, 375px, 1280px)};
+	--font-size--h4: #{fluid-range( 22px, 28px, 375px, 1280px)};
+	--font-size--h5: #{fluid-range( 20px, 22px, 375px, 1280px)};
+}

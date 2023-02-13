@@ -1,0 +1,57 @@
+body {
+	font-family: var($primary-font);
+	line-height: 1.44;
+
+	&,
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+.noscroll {
+	overflow: hidden;
+}
+
+.blur {
+	filter: blur(rem-calc(34px));
+}
+
+body {
+	&.development {
+		&:before {
+			position: fixed;
+			content: "small";
+			z-index: 9999999999999999;
+			top: 0;
+			right: 0;
+			padding: rem-calc(0 2px);
+			font-size: rem-calc(10px);
+			color: red;
+			background: white;
+
+			@include breakpoint(medium) {
+				content: "medium";
+			}
+			@include breakpoint(large) {
+				content: "large";
+			}
+			@include breakpoint(xlarge) {
+				content: "xlarge";
+			}
+		}
+	}
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+ul, ol {
+	padding-left: 1em;
+	font-weight: 500;
+
+	> li {
+		margin-bottom: rem-calc(4px);
+	}
+}
