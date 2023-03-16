@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>King's Court</title>
+        <title>Kings Court</title>
         <meta name="description" content="Play chess against people online or AI!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="icon" />
