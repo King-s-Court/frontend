@@ -3,4 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
+
+const withFonts = require('next-fonts');
+
+module.exports = withFonts();

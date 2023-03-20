@@ -11,20 +11,17 @@ export default function Home() {
       </Head>
       <main>
           <h1>
-              H1
+              Header1
           </h1>
           <h2>
-              H2
+              Header2
           </h2>
           <h3>
-              H3
+              Header3
           </h3>
           <h4>
-              H4
+              Header4
           </h4>
-          <h5>
-              H5
-          </h5>
           <p>
               Paragraph
           </p>
