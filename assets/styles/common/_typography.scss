@@ -1,14 +1,13 @@
 .subtitle {
-    margin-bottom: $spacing-1;
+    font-size: rem-calc(18px);
     font-family: $primary-font--bold;
-    font-weight: 700;
+    font-weight: 900;
     line-height: 1.1875;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 div, .div {
-    font-size: rem-calc(18);
+    font-size: rem-calc(18px);
     margin: 0;
     font-family: $secondary-font;
     font-weight: 500;

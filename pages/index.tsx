@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Card from "@/components/Card";
 
 export default function Home() {
   return (
@@ -7,7 +8,6 @@ export default function Home() {
         <title>Kings Court</title>
         <meta name="description" content="Play chess against people online or AI!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="icon" />
       </Head>
       <main>
           <h1>
@@ -28,6 +28,7 @@ export default function Home() {
           <div className={'subtitle'}>
               Subtitle
           </div>
+          <Card title={'play players'} image={'robot.png'} />
       </main>
     </>
   )
