@@ -1,6 +1,7 @@
 import {Fragment} from "react";
 import Link from "next/link";
-
+import logo from '/public/kingscourt.svg';
+import Image from "next/image";
 const Navbar = () => {
     return (
         <nav className={'navbar'}>
@@ -8,7 +9,9 @@ const Navbar = () => {
                 <div className={'navbar-left'}>
                     <Fragment>
                         <Link href={'/'}>
-                            <img src={'/logo.png'} alt={'logo'}/>
+                            <div className={'navbar-logo-container'}>
+                                <Image src={logo} alt={'logo'}/>
+                            </div>
                         </Link>
                     </Fragment>
                     <div className={'navbar-left__menu'}>

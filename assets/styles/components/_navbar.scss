@@ -12,12 +12,30 @@
         position: relative;
         z-index: 1;
     }
+    &-logo {
+        &-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: rem-calc(50px);
+            width: rem-calc(50px);
+            border-radius: 100%;
+            background-color: $gray;
+            padding: rem-calc(4px);
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: $primary-color;
+            }
+        }
+    }
     &-left {
         display: flex;
         gap: rem-calc(16);
 
         &__menu {
             display: flex;
+            align-items: center;
             gap: rem-calc(16);
         }
 
@@ -25,7 +43,7 @@
     &-link {
         color: $white;
         text-decoration: none;
-        transition: color 0.2s ease-in-out;
+        transition: color 0.3s ease-in-out;
         &:hover {
             text-decoration: underline;
         }
