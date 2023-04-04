@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Badge from "@/components/Badge";
+import Input from "@/components/Input";
 
 export default function Home() {
     return (
@@ -34,6 +35,8 @@ export default function Home() {
                         Badge
                     </p>
                 </Badge>
+                <Input type={"text"}></Input>
+                <Input type={"password"}></Input>
             </main>
         </>
     )
