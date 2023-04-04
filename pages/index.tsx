@@ -1,5 +1,7 @@
 import Head from 'next/head'
+
 import Card from "@/components/Card";
+import Badge from "@/components/Badge";
 
 export default function Home() {
   return (
@@ -29,6 +31,11 @@ export default function Home() {
               Subtitle
           </div>
           <Card title={'play players'} image={'robot.png'} />
+          <Badge backgroundColor={'#414493'} color={'#FCFCFA'}>
+              <p>
+                  Badge
+              </p>
+          </Badge>
       </main>
     </>
   )
