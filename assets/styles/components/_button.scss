@@ -14,13 +14,13 @@
     }
 }
 
-button:disabled {
-    background-color: #0000001e;
+&:disabled {
+    background-color: $hover;
     cursor: default;
 }
 
-button:hover {
-    background-color: #0000001e;
+&:hover {
+    background-color: $hover;
 }
 
 .primary {
@@ -29,12 +29,12 @@ button:hover {
 }
 
 .secondary {
-    background-color: #D9D9D9;
+    background-color: $button-gray;
     color: $black;
 }
 
 .bordered {
     background-color: $white;
     color: $black;
-    border: 1px solid $primary-color;
+    border: rem-calc(1px) solid $primary-color;
 }
