@@ -2,6 +2,8 @@ import {Fragment} from "react";
 import Link from "next/link";
 import logo from '/public/kingscourt.svg';
 import Image from "next/image";
+import Button, {ButtonVariant} from "@/components/Button";
+
 const Navbar = () => {
     return (
         <nav className={'navbar'}>
@@ -19,9 +21,9 @@ const Navbar = () => {
                         <Link className={'subtitle navbar-link'}  href={'/profile'}>Profile</Link>
                     </div>
                 </div>
-                <div className={'navbar-right'}>
+                <Button variant={ButtonVariant.primary}>
                     Login
-                </div>
+                </Button>
             </div>
         </nav>
     )
