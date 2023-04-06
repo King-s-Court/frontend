@@ -1,0 +1,30 @@
+.card {
+  width: rem-calc(250px);
+  border-radius: rem-calc(32px);
+  margin: unset;
+  border: rem-calc(2px) solid $secondary-color;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background: $secondary-color;
+  }
+
+  &-container {
+    padding: rem-calc(16px 28px 18px 28px);
+    gap: rem-calc(16px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  img {
+    width: rem-calc(174px);
+    height: rem-calc(174px);
+  }
+
+  &-title {
+    text-align: center;
+  }
+}
