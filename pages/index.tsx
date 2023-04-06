@@ -1,3 +1,4 @@
+import Button, { ButtonVariant } from '@/components/Button'
 import Head from 'next/head'
 
 import Card from "@/components/Card";
@@ -31,6 +32,12 @@ export default function Home() {
           <div className={'subtitle'}>
               Subtitle
           </div>
+          <Button 
+            variant={ButtonVariant.primary}
+            onClick={(event) => console.log(event)}
+          >
+            Some Button
+          </Button>
           <Card title={'play players'} image={'robot.png'} />
           <Badge backgroundColor={'#414493'} color={'#FCFCFA'}>
               <p>
