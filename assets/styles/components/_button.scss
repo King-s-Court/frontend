@@ -12,15 +12,15 @@
     svg {
         padding-left: $spacing-4;
     }
-}
-
-&:disabled {
-    background-color: $hover;
-    cursor: default;
-}
-
-&:hover {
-    background-color: $hover;
+    
+    &:disabled {
+        background-color: $hover;
+        cursor: default;
+    }
+    
+    &:hover {
+        background-color: $hover;
+    }
 }
 
 .primary {
