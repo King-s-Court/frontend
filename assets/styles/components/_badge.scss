@@ -1,0 +1,10 @@
+.badge {
+    padding: rem-calc(4px 8px);
+    border-radius: rem-calc(32px);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    line-height: 1;
+}
