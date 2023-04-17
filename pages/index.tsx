@@ -4,8 +4,31 @@ import Head from 'next/head'
 import Card from "@/components/Card";
 import Badge from "@/components/Badge";
 import Input from "@/components/Input";
+import CustomTab from '@/components/CustomTab';
 
 export default function Home() {
+  const tabs = [
+    {
+      label: "Tab 1",
+      Component: <div>Hello, I am tab 1</div>
+    },
+    {
+      label: "Tab 2",
+      Component: <div>Hello, I am tab 2</div>
+    },
+    {
+      label: "Tab 3",
+      Component: (
+        <Button 
+            variant={ButtonVariant.primary}
+            onClick={(event) => console.log(event)}
+          >
+            Some Button
+        </Button>
+      )
+    }
+  ];
+
   return (
     <>
       <Head>
@@ -46,6 +69,9 @@ export default function Home() {
           </Badge>
           <Input type={"text"}></Input>
           <Input type={"password"}></Input>
+          <CustomTab tabs={tabs} 
+            styles={{backgroundColor: "red", color: "blue", selectBackgroundColor: "purple", innerDivBackgroundColor: "green"}}
+          />
       </main>
     </>
   )

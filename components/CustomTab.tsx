@@ -5,37 +5,60 @@ import Box from '@mui/material/Box';
 
 export type TabProps = {
   label: string,
-  Component: JSX.Element
+  Component: JSX.Element // inner component
 };
 
 export type CustomTabProps = {
-  tabs: TabProps[]
+  tabs: TabProps[];
+  styles?: { 
+    color: string,
+    backgroundColor: string,
+    selectBackgroundColor: string,
+    innerDivBackgroundColor: string,
+  };
 };
 
-export function CustomTab({ tabs }: CustomTabProps) {
+export function CustomTab({ tabs, styles }: CustomTabProps) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: number) => {
     setValue(newValue);
   };
 
+  const customTabsStyles = {
+		color: styles?.color,
+		backgroundColor: styles?.backgroundColor,
+    borderColor: styles?.selectBackgroundColor ?? "#7B7DB0",
+	};
+
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <div className='custom-tabs-container'>
+      <div>
         <Tabs
-          className="custom-tabs"
+          value={value}
+          onChange={handleChange}
+          className='custom-tabs'
+          TabIndicatorProps={{
+            style: { display: 'none' }
+          }}
+          style={customTabsStyles}
         >
           {tabs.map(({ label }, i) => (
-            <Tab label={label} key={i} />
+            <Tab 
+              className='custom-tab' 
+              label={label} 
+              key={i} 
+              sx={{ "&.Mui-selected": { backgroundColor: customTabsStyles.borderColor } }}
+            />
           ))}
         </Tabs>
-      </Box>
+      </div>
       {tabs.map(({ Component }, i) => (
-        <TabPanel value={value} index={i} key={i}>
+        <TabPanel value={value} index={i} key={i} style={{backgroundColor: styles?.innerDivBackgroundColor}} >
           {Component}
         </TabPanel>
       ))}
-    </Box>
+    </div>
   );
 }
 
@@ -43,18 +66,19 @@ type TabPanelProps = {
   value: number,
   index: number,
   children: React.ReactNode,
+  style: React.CSSProperties,
   other?: any
 }
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, style, ...other } = props;
 
   return (
-    <div>
+    <div style={style}>
       {value === index && (
-        <Box>
+        <div>
           {children}
-        </Box>
+        </div>
       )}
     </div>
   );
