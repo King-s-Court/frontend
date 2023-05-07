@@ -4,8 +4,22 @@ import Head from 'next/head'
 import Card from "@/components/Card";
 import Badge from "@/components/Badge";
 import Input from "@/components/Input";
+import Table from '@/components/Table';
+import { GridColDef, GridRowsProp } from '@mui/x-data-grid';
 
 export default function Home() {
+
+  const rows: GridRowsProp = [
+    { id: 1, col1: 'Hello', col2: 'World' },
+    { id: 2, col1: 'DataGridPro', col2: 'is Awesome' },
+    { id: 3, col1: 'MUI', col2: 'is Amazing' },
+  ];
+  
+  const columns: GridColDef[] = [
+    { field: 'col1', headerName: 'Column 1', width: 200 },
+    { field: 'col2', headerName: 'Column 2', width: 200 },
+  ];
+
   return (
     <>
       <Head>
@@ -46,6 +60,7 @@ export default function Home() {
           </Badge>
           <Input type={"text"}></Input>
           <Input type={"password"}></Input>
+          <Table rows={rows} columns={columns} handleRowClick={() => console.log("clicked")} />
       </main>
     </>
   )

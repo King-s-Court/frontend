@@ -1,11 +1,17 @@
-import {DataGrid , GridRowsProp} from '@mui/x-data-grid';
+import {DataGrid, GridRowsProp, GridColDef} from '@mui/x-data-grid';
 
-const Table = ({data, columns, handleRowClick, height = '80vh'}: any) => {
-    const rows: GridRowsProp = data;
+export type TableProps = {
+    rows: GridRowsProp,
+    columns: GridColDef[],
+    height?: string,
+    handleRowClick: () => void,
+}
 
+const Table = ({rows, columns, handleRowClick, height = '80vh'}: TableProps) => {
+    
     return <div style={{height: height}}>
         <DataGrid
-            getRowId={(row) => row.project_id}
+            getRowId={(row) => row.id}
             rows={rows}
             columns={columns}
             onRowClick={handleRowClick}
