@@ -1,0 +1,41 @@
+.button {
+    padding: rem-calc(16px 32px);
+    border-radius: rem-calc(80px);
+    text-decoration: none;
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    line-height: 1;
+    cursor: pointer;
+    svg {
+        padding-left: $spacing-4;
+    }
+
+    &:disabled {
+        background-color: $hover;
+        cursor: default;
+    }
+    
+    &:hover {
+        background-color: $hover;
+    }
+}
+
+.primary {
+    background-color: $primary-color;
+    color: $white;
+}
+
+.secondary {
+    background-color: $button-gray;
+    color: $black;
+}
+
+.bordered {
+    background-color: $white;
+    font-weight: 700;
+    color: $black;
+    border: rem-calc(1px) solid $primary-color;
+}
