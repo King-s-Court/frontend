@@ -17,11 +17,13 @@
         background-color: $hover;
         cursor: default;
     }
-    
+
     &:hover {
         background-color: $hover;
     }
 }
+
+
 
 .primary {
     background-color: $primary-color;
