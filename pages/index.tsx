@@ -5,7 +5,6 @@ import Card from "@/components/Card";
 import Badge from "@/components/Badge";
 import Input from "@/components/Input";
 import CustomTab from '@/components/CustomTab';
-import Board from "@/components/Board/Board";
 
 export default function Home() {
   const tabs = [
@@ -73,7 +72,6 @@ export default function Home() {
           <CustomTab tabs={tabs} 
             styles={{backgroundColor: "red", color: "blue", selectBackgroundColor: "purple", innerDivBackgroundColor: "green"}}
           />
-        <Board style={'classic'}/>
       </main>
     </>
   )
