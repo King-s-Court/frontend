@@ -6,6 +6,7 @@ import Badge from "@/components/Badge";
 import Input from "@/components/Input";
 import Table from '@/components/Table';
 import { GridColDef, GridRowsProp } from '@mui/x-data-grid';
+import CustomTab from '@/components/CustomTab';
 
 export default function Home() {
 
@@ -18,6 +19,27 @@ export default function Home() {
   const columns: GridColDef[] = [
     { field: 'col1', headerName: 'Column 1', width: 200 },
     { field: 'col2', headerName: 'Column 2', width: 200 },
+
+  const tabs = [
+    {
+      label: "Tab 1",
+      Component: <div>Hello, I am tab 1</div>
+    },
+    {
+      label: "Tab 2",
+      Component: <div>Hello, I am tab 2</div>
+    },
+    {
+      label: "Tab 3",
+      Component: (
+        <Button 
+            variant={ButtonVariant.primary}
+            onClick={(event) => console.log(event)}
+          >
+            Some Button
+        </Button>
+      )
+    }
   ];
 
   return (
@@ -61,6 +83,9 @@ export default function Home() {
           <Input type={"text"}></Input>
           <Input type={"password"}></Input>
           <Table rows={rows} columns={columns} handleRowClick={() => console.log("clicked")} />
+          <CustomTab tabs={tabs} 
+            styles={{backgroundColor: "red", color: "blue", selectBackgroundColor: "purple", innerDivBackgroundColor: "green"}}
+          />
       </main>
     </>
   )
