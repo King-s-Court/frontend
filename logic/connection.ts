@@ -1,7 +1,6 @@
 import {HttpTransportType, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 import {useState} from "react";
 
-
 async function Connection() {
   const [connection, setConnection] = useState<HubConnectionBuilder>(null);
 

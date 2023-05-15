@@ -11,9 +11,10 @@ interface BoardProps {
 const Board = ({}: BoardProps) => {
 
   const [game, setGame] = useState<Chess>(new Chess());
-  const [moveFrom, setMoveFrom] = useState("");
+  const [moveFrom, setMoveFrom] = useState<Square | null>(null);
   const [optionSquares, setOptionSquares] = useState({});
   const [orientation, setOrientation] = useState<BoardOrientation>("white");
+  const [lastMove, setLastMove] = useState<{ from: Square; to: Square } | null>(null);
 
   function getGame() {
     const fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
@@ -27,13 +28,17 @@ const Board = ({}: BoardProps) => {
   }, []);
 
   function isPlayer(color: string) {
-    if(color === "w" || color === "b") {
+    if (color === "w" || color === "b") {
       return color === orientation[0];
     }
     return color === orientation;
   }
+  function getSquarePiece(square: Square) {
+    return game.get(square);
+  }
 
-  function makeMove(sourceSquare: string, targetSquare: string) {
+  function makeMove(sourceSquare: Square, targetSquare: Square) {
+    if(!isPlayer(getSquarePiece(sourceSquare)?.color)) return false;
     const move = {
       from: sourceSquare,
       to: targetSquare,
@@ -43,21 +48,21 @@ const Board = ({}: BoardProps) => {
     try {
       game.move(move);
       setGame(new Chess(game.fen()));
-      setMoveFrom("");
+      setMoveFrom(null);
       setOptionSquares({});
+      setLastMove({from: sourceSquare, to: targetSquare}); // Store the latest move
       return true;
     } catch {
       return false
     }
   }
 
-  function onDrop(sourceSquare: string, targetSquare: string) {
-
+  function onDrop(sourceSquare: Square, targetSquare: Square) {
     return makeMove(sourceSquare, targetSquare);
   }
 
   function getMoveOptions(square: Square) {
-    if (!game.get(square) || !isPlayer(game.get(square).color)) {
+    if (!getSquarePiece(square) || !isPlayer(getSquarePiece(square).color)) {
       setOptionSquares({});
       return false;
     }
@@ -110,9 +115,16 @@ const Board = ({}: BoardProps) => {
       return
     }
 
-    setMoveFrom("");
+    setMoveFrom(null);
     setOptionSquares({});
   }
+
+  const lastMoveStyles: Record<string, { background: string }> = lastMove
+    ? {
+      [lastMove.from]: {background: "rgba(0, 0, 255, 0.4)"},
+      [lastMove.to]: {background: "rgba(0, 0, 255, 0.4)"},
+    }
+    : {};
 
   return <div
     style={{
@@ -129,6 +141,7 @@ const Board = ({}: BoardProps) => {
       boardOrientation={orientation}
       customSquareStyles={{
         ...optionSquares,
+        ...lastMoveStyles
       }}
     />
   </div>
