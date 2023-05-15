@@ -33,12 +33,13 @@ const Board = ({}: BoardProps) => {
     }
     return color === orientation;
   }
+
   function getSquarePiece(square: Square) {
     return game.get(square);
   }
 
   function makeMove(sourceSquare: Square, targetSquare: Square) {
-    if(!isPlayer(getSquarePiece(sourceSquare)?.color)) return false;
+    if (!isPlayer(getSquarePiece(sourceSquare)?.color)) return false;
     const move = {
       from: sourceSquare,
       to: targetSquare,
@@ -50,7 +51,7 @@ const Board = ({}: BoardProps) => {
       setGame(new Chess(game.fen()));
       setMoveFrom(null);
       setOptionSquares({});
-      setLastMove({from: sourceSquare, to: targetSquare}); // Store the latest move
+      setLastMove({from: sourceSquare, to: targetSquare});
       return true;
     } catch {
       return false
