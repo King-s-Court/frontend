@@ -1,8 +1,8 @@
 .subtitle {
     font-size: rem-calc(18px);
     font-family: $primary-font--bold;
-    font-weight: 900;
-    line-height: 1.1875;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
@@ -16,7 +16,7 @@ div, .div {
 }
 
 p {
-    font-size: rem-calc(18);
+    font-size: rem-calc(18px);
     margin: 0;
     font-family: $secondary-font;
     font-weight: 500;
@@ -30,7 +30,7 @@ p {
 
 h1,
 .h1 {
-    font-size: rem-calc(90);
+    font-size: rem-calc(90px);
     margin: unset;
     font-family: $primary-font;
     font-weight: 500;
@@ -40,7 +40,7 @@ h1,
 
 h2,
 .h2 {
-    font-size: rem-calc(68);
+    font-size: rem-calc(68px);
     margin: unset;
     font-family: $primary-font;
     font-weight: 500;
@@ -50,7 +50,7 @@ h2,
 
 h3,
 .h3 {
-    font-size: rem-calc(42);
+    font-size: rem-calc(42px);
     margin: unset;
     font-family: $primary-font;
     font-weight: 500;
@@ -60,7 +60,7 @@ h3,
 
 h4,
 .h4 {
-    font-size: rem-calc(26);
+    font-size: rem-calc(26px);
     margin: unset;
     font-family: $primary-font;
     font-weight: 500;
@@ -70,7 +70,7 @@ h4,
 
 
 input {
-    font-size: rem-calc(18);
+    font-size: rem-calc(18px);
     margin: 0;
     font-family: $primary-font;
     font-weight: 400;
@@ -79,7 +79,7 @@ input {
 }
 
 button {
-    font-size: rem-calc(18);
+    font-size: rem-calc(18px);
     margin: 0;
     font-family: $primary-font;
     font-weight: 400;

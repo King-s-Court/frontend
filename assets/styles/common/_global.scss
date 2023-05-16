@@ -1,6 +1,6 @@
 body {
 	line-height: 1.44;
-
+    margin: unset;
 	&,
 	html {
 		scroll-behavior: smooth;
@@ -42,8 +42,8 @@ body {
 }
 
 img {
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: 100%;
 }
 
 ul, ol {
@@ -53,4 +53,10 @@ ul, ol {
 	> li {
 		margin-bottom: rem-calc(4px);
 	}
+}
+
+.container {
+    max-width: rem-calc(1280px);
+    margin: 0 auto;
+    padding: 0 rem-calc(16px);
 }
