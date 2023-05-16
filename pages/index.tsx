@@ -1,6 +1,5 @@
 import Button, { ButtonVariant } from '@/components/Button'
 import Head from 'next/head'
-
 import Card from "@/components/Card";
 import Badge from "@/components/Badge";
 import Input from "@/components/Input";
@@ -19,6 +18,7 @@ export default function Home() {
   const columns: GridColDef[] = [
     { field: 'col1', headerName: 'Column 1', width: 200 },
     { field: 'col2', headerName: 'Column 2', width: 200 },
+  ]
 
   const tabs = [
     {

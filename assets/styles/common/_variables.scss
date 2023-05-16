@@ -17,7 +17,7 @@ $spacing-2: rem-calc(16);
 $spacing-3: rem-calc(24);
 $spacing-4: rem-calc(32);
 $spacing-5: rem-calc(40);
-$spacing-6: rem-calc(60);
+$spacing-6: rem-calc(60);   
 
 // flexible row spacing
 $spacing-row: rem-calc(80);
@@ -41,14 +41,3 @@ $green: #7FA650;
 $red: #CA3431;
 $button-gray: #D9D9D9;
 $hover: #0000001e;
-
-// font sizes supplied to theme.json
-:root {
-    --font-size--body: #{fluid-range( 16px, 18px, 375px, 1280px)};
-    --font-size--subtitle: #{fluid-range( 12px, 16px, 375px, 1280px)};
-    --font-size--h1: #{fluid-range( 43px, 90px, 375px, 1280px)};
-    --font-size--h2: #{fluid-range( 38px, 68px, 375px, 1280px)};
-    --font-size--h3: #{fluid-range( 28px, 42px, 375px, 1280px)};
-    --font-size--h4: #{fluid-range( 22px, 28px, 375px, 1280px)};
-    --font-size--h5: #{fluid-range( 20px, 22px, 375px, 1280px)};
-}

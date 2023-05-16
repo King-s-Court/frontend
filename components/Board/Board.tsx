@@ -106,14 +106,9 @@ const Board = ({}: BoardProps) => {
       if (hasOptions) setMoveFrom(square);
     }
 
-    if (!moveFrom) {
+    if (!moveFrom || !makeMove(moveFrom, square)) {
       resetFirstMove(square);
       return;
-    }
-
-    if (!makeMove(moveFrom, square)) {
-      resetFirstMove(square);
-      return
     }
 
     setMoveFrom(null);
@@ -128,14 +123,9 @@ const Board = ({}: BoardProps) => {
     : {};
 
   return <div
-    style={{
-      margin: '3rem auto',
-      maxWidth: '70vh',
-      width: '70vw'
-    }}
+    className={"board"}
   >
     <Chessboard
-      id="Configurable Board"
       position={game.fen()}
       onPieceDrop={onDrop}
       onSquareClick={onSquareClick}
