@@ -17,7 +17,7 @@ const Navbar = () => {
                         </Link>
                     </Fragment>
                     <div className={'navbar-left__menu'}>
-                        <Link className={'subtitle navbar-link'} href={'/play'}>Play</Link>
+                        <Link className={'subtitle navbar-link'} href={'/game'}>Play</Link>
                         <Link className={'subtitle navbar-link'}  href={'/profile'}>Profile</Link>
                     </div>
                 </div>

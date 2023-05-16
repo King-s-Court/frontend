@@ -1,0 +1,22 @@
+.player {
+    display: flex;
+    justify-content: space-between;
+
+    &-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem-calc(16px);
+    }
+
+    &-avatar {
+        border-radius: rem-calc(16px);
+        height: rem-calc(72px);
+        width: rem-calc(72px);
+    }
+    &-time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

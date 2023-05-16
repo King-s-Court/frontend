@@ -1,8 +1,7 @@
 import Head from 'next/head'
+import Game from "@/layouts/Game";
 
-import Board from "@/components/Board/Board";
-
-export default function Game() {
+export default function GamePage() {
   const gameId = 1;
 
   return (
@@ -13,7 +12,7 @@ export default function Game() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <Board gameId={gameId} style={'classic'}/>
+        <Game gameId={gameId} />
       </main>
     </>
   )

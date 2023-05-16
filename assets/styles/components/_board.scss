@@ -1,4 +1,9 @@
 .board {
-    max-width: 70vh;
-    width: 70vw;
+    width: 100%;
+
+    &--left {
+        display: flex;
+        flex-direction: column;
+        gap: rem-calc(16px);
+    }
 }

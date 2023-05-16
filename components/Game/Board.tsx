@@ -2,13 +2,7 @@ import {Chessboard} from "react-chessboard";
 import {useEffect, useState} from "react";
 import {Chess, Square, Move} from "chess.js";
 import {BoardOrientation} from "react-chessboard/dist/chessboard/types";
-
-interface BoardProps {
-  style: string;
-  gameId: number;
-}
-
-const Board = ({}: BoardProps) => {
+const Board = () => {
 
   const [game, setGame] = useState<Chess>(new Chess());
   const [moveFrom, setMoveFrom] = useState<Square | null>(null);
@@ -122,9 +116,7 @@ const Board = ({}: BoardProps) => {
     }
     : {};
 
-  return <div
-    className={"board"}
-  >
+  return <div className={'board'}>
     <Chessboard
       position={game.fen()}
       onPieceDrop={onDrop}
