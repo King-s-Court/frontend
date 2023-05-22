@@ -1,0 +1,15 @@
+.game {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    grid-gap: rem-calc(80px);
+
+    &--left {
+        display: flex;
+        flex-direction: column;
+        gap: rem-calc(16px);
+    }
+    &--right {
+        display: flex;
+        justify-content: center;
+    }
+}
