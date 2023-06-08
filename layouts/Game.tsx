@@ -6,6 +6,7 @@ import {useEffect} from "react";
 type GameProps = {
   gameId: number;
 }
+
 const Game = ({gameId}: GameProps) => {
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Game = ({gameId}: GameProps) => {
       <div className={'game--left'}>
         <Player player={{name: "Player 1", time: 180}}/>
         <div className={"game__chessboard"}>
-          <Board/>
+          <Board gameId={gameId}/>
         </div>
         <Player player={{name: "Player 1", time: 180}}/>
       </div>

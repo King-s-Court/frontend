@@ -1,9 +1,20 @@
-import {Chessboard} from "react-chessboard";
-import {useEffect, useState} from "react";
-import {Chess, Square, Move} from "chess.js";
-import {BoardOrientation} from "react-chessboard/dist/chessboard/types";
-const Board = () => {
+import { Chessboard } from "react-chessboard";
+import { useEffect, useState } from "react";
+import { Chess, Square, Move } from "chess.js";
+import { BoardOrientation } from "react-chessboard/dist/chessboard/types";
+import signalRService from "./../../logic/connection";
 
+type Props = {
+  gameId: number;
+}
+
+export type NewMove = {
+  from: Square,
+  to: Square,
+  promotion?: string | undefined,
+}
+
+const Board = ({ gameId }: Props) => {
   const [game, setGame] = useState<Chess>(new Chess());
   const [moveFrom, setMoveFrom] = useState<Square | null>(null);
   const [optionSquares, setOptionSquares] = useState({});
@@ -18,8 +29,35 @@ const Board = () => {
   }
 
   useEffect(() => {
+    startConnection();
+  }, []);
+
+  useEffect(() => {
     getGame();
   }, []);
+
+  function startConnection() {
+    signalRService.startConnection(gameId, onMoveReceived, onPlayerJoined);
+  }
+
+  function onMoveReceived(fen: string) {
+    const chess = new Chess();
+    chess.load(fen);
+    setGame(chess);
+
+    // Parse the move details from the FEN string
+    const fenParts = fen.split(" ");
+    const moveFrom = fenParts[1].slice(0, 2) as Square;
+    const moveTo = fenParts[1].slice(2, 4) as Square;
+
+    // Update the moveFrom and lastMove state
+    setMoveFrom(moveFrom);
+    setLastMove({ from: moveFrom, to: moveTo });
+  }
+
+  function onPlayerJoined(connectionId: string) {
+    console.log(connectionId);
+  }
 
   function isPlayer(color: string) {
     if (color === "w" || color === "b") {
@@ -34,18 +72,19 @@ const Board = () => {
 
   function makeMove(sourceSquare: Square, targetSquare: Square) {
     if (!isPlayer(getSquarePiece(sourceSquare)?.color)) return false;
-    const move = {
+    const move: NewMove = {
       from: sourceSquare,
       to: targetSquare,
       promotion: "q",
-    }
+    };
 
     try {
       game.move(move);
       setGame(new Chess(game.fen()));
       setMoveFrom(null);
       setOptionSquares({});
-      setLastMove({from: sourceSquare, to: targetSquare});
+      setLastMove({ from: sourceSquare, to: targetSquare });
+      signalRService.sendMove(gameId.toString(), game.fen());
       return true;
     } catch {
       return false
@@ -111,8 +150,8 @@ const Board = () => {
 
   const lastMoveStyles: Record<string, { background: string }> = lastMove
     ? {
-      [lastMove.from]: {background: "rgba(0, 0, 255, 0.4)"},
-      [lastMove.to]: {background: "rgba(0, 0, 255, 0.4)"},
+      [lastMove.from]: { background: "rgba(0, 0, 255, 0.4)" },
+      [lastMove.to]: { background: "rgba(0, 0, 255, 0.4)" },
     }
     : {};
 

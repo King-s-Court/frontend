@@ -1,36 +1,53 @@
-import {HttpTransportType, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
-import {useState} from "react";
+import { NewMove } from "@/components/Game/Board";
+import { HttpTransportType, HubConnection, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { Move } from "chess.js";
 
-async function Connection() {
-  // const [connection, setConnection] = useState<HubConnectionBuilder>(null);
-  //
-  // async function buildConnection() {
-  //   let connection = new HubConnectionBuilder()
-  //     .withUrl("https://localhost:7135/chessHub", {
-  //       skipNegotiation: true,
-  //       transport: HttpTransportType.WebSockets
-  //     })
-  //     .configureLogging(LogLevel.Information)
-  //     .withAutomaticReconnect()
-  //     .build();
-  //
-  //   connection.on("ReceiveMove", receiveMove);
-  // }
-  //
-  // async function sendMove(move, gameId) {
-  //   if (connection) {
-  //     await connection.invoke("SendMove", {move, gameId});
-  //   }
-  // }
-  // async function joinGame() {
-  //   if (connection) {
-  //     await connection.invoke("JoinGame", {gameId});
-  //   }
-  // }
-  // async function receiveMove(move) {
-  //   // Handle received move here
-  //   console.log("Received move: ", move);
-  // }
-}
+const signalRService = {
+  connection: null as HubConnection | null,
 
-export default Connection;
+  startConnection: (gameId: number, onMoveReceived: (fen: string) => void, onPlayerJoined: (connectionId: string) => void) => {
+    signalRService.connection = new HubConnectionBuilder()
+      .withUrl("https://localhost:7135/chessHub",
+        {
+          transport: HttpTransportType.WebSockets,
+        })
+      .configureLogging(LogLevel.Information)
+      .withAutomaticReconnect()
+      .build();
+
+    signalRService.connection.start()
+      .then(() => {
+        signalRService.joinGame(gameId.toString());
+        signalRService.registerMoveReceivedHandler(onMoveReceived);
+        signalRService.registerPlayerJoinedHandler(onPlayerJoined);
+      })
+      .catch(error => console.error('Error starting SignalR connection:', error));
+  },
+
+  joinGame: (gameId: string) => {
+    console.log(signalRService.connection?.state)
+    signalRService.connection?.invoke('JoinGame', gameId)
+      .catch(error => console.error('Error joining game:', error));
+  },
+
+  sendMove: (gameId: string, newFen: string) => {
+    // NewMove to rank and file
+    console.log(newFen);
+    signalRService.connection?.invoke('SendMove', newFen, gameId,)
+      .catch(error => console.error('Error sending move:', error));
+  },
+
+  registerMoveReceivedHandler: (onMoveReceived: (fen: string) => void) => {
+    signalRService.connection?.on('ReceiveMove', (fen: string) => {
+      onMoveReceived(fen);
+    });
+  },
+
+  registerPlayerJoinedHandler: (onPlayerJoined: (connectionId: string) => void) => {
+    signalRService.connection?.on('PlayerJoined', (connectionId: string) => {
+      onPlayerJoined(connectionId);
+    });
+  }
+};
+
+export default signalRService;

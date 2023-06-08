@@ -7,7 +7,7 @@ export type TableProps = {
     handleRowClick: () => void,
 }
 
-const   Table = ({rows, columns, handleRowClick, height = '80vh'}: TableProps) => {
+const Table = ({rows, columns, handleRowClick, height = '80vh'}: TableProps) => {
     
     return <div style={{height: height}}>
         <DataGrid
