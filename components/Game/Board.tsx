@@ -30,7 +30,7 @@ const Board = ({ gameId }: Props) => {
 
   useEffect(() => {
     startConnection();
-  }, [])
+  }, []);
 
   useEffect(() => {
     getGame();
@@ -41,9 +41,18 @@ const Board = ({ gameId }: Props) => {
   }
 
   function onMoveReceived(fen: string) {
-    // Handle the received move
-    console.log(fen)
-    setGame(new Chess(fen));
+    const chess = new Chess();
+    chess.load(fen);
+    setGame(chess);
+
+    // Parse the move details from the FEN string
+    const fenParts = fen.split(" ");
+    const moveFrom = fenParts[1].slice(0, 2) as Square;
+    const moveTo = fenParts[1].slice(2, 4) as Square;
+
+    // Update the moveFrom and lastMove state
+    setMoveFrom(moveFrom);
+    setLastMove({ from: moveFrom, to: moveTo });
   }
 
   function onPlayerJoined(connectionId: string) {
@@ -75,7 +84,7 @@ const Board = ({ gameId }: Props) => {
       setMoveFrom(null);
       setOptionSquares({});
       setLastMove({ from: sourceSquare, to: targetSquare });
-      signalRService.sendMove(gameId.toString(), move);
+      signalRService.sendMove(gameId.toString(), game.fen());
       return true;
     } catch {
       return false

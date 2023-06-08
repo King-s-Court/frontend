@@ -30,13 +30,15 @@ const signalRService = {
       .catch(error => console.error('Error joining game:', error));
   },
 
-  sendMove: (gameId: string, move: NewMove) => {
-    signalRService.connection?.invoke('SendMove', gameId, move)
+  sendMove: (gameId: string, newFen: string) => {
+    // NewMove to rank and file
+    console.log(newFen);
+    signalRService.connection?.invoke('SendMove', newFen, gameId,)
       .catch(error => console.error('Error sending move:', error));
   },
 
   registerMoveReceivedHandler: (onMoveReceived: (fen: string) => void) => {
-    signalRService.connection?.on('MoveReceived', (fen: string) => {
+    signalRService.connection?.on('ReceiveMove', (fen: string) => {
       onMoveReceived(fen);
     });
   },
